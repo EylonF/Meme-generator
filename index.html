@@ -7,11 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://kit.fontawesome.com/7a3aba81fd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/main.css">
 
 </head>
 
-<body>
+<body onload="onInitGallery()">
 
     <div class="main-screen" onclick="toggleMenu()"></div>
 
@@ -24,8 +25,8 @@
 
             <nav class="main-nav">
                 <ul class="nav-container clean-list flex">
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">memegen</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#meme-editor">memegen</a></li>
                     <li><a href="#">Saved memes</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
@@ -36,16 +37,62 @@
 
     </header>
 
-    <section class="gallery">
+    <main class="main-content main-layout">
+        <section id="meme-editor" class="meme-editor">
 
-    </section>
+            <h1>Meme Editor</h1>
 
-    <section class="editor">
+            <div class="canvas-container flex space-between">
+                <canvas class="canvas" id="my-canvas" height="500" width="500" onclick="canvasClicked(event)">
+                </canvas>
 
-    </section>
+                
+                <div class="controls">
+    
+                    <input class="line-txt" type="text" placeholder="Enter Text Here" onchange="onChangeText(this.value)" autofocus>
+                    <button class="arrows"> <img src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                    <button class="plus"> <img src="./imgs/icons/add.png"></button>
+                    <button class="trash"> <img src="./imgs/icons/trash.png"></button>
+                    <button class="a-plus"> <img src="./imgs/icons/increase font - icon.png"></button>
+                    <button class="a-minus"> <img src="./imgs/icons/decrease font - icon.png"></button>
+                    <button class="align-left"> <img src="./imgs/icons/align-to-left.png"></button>
+                    <button class="align-center"> <img src="./imgs/icons/center-text-alignment.png"></button>
+                    <button class="align-right"> <img src="./imgs/icons/align-to-right.png"></button>
+                    <select class="font" name="" id=""></select>
+                    <button class="stroke"> <img src="./imgs/icons/text stroke.png"></button>
+                    <button class="colors"> <img src="./imgs/icons/paint-board-and-brush.png"></button>
+                    
+                    <button class="download">Download</button>
+                    <button class="share">Share</button>
+                </div>
+            </div>
 
-    <script src="js/controller.js"></script>
-    <script src="js/service.js"></script>
+        </section>
+
+        <section id="gallery" class="gallery">
+            <h1>Photo Gallery</h1>
+            <div class="imgs-container">
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container main-layout flex">
+
+            <div class="logo"><img src="imgs/LOGO.png"></div>
+
+            <small>© all rights reserved - 2021</small>
+
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/gallery-service.js"></script>
+    <script src="js/gallery-controller.js"></script>
+    <script src="js/meme-service.js"></script>
+    <script src="js/meme-controller.js"></script>
 </body>
 
 </html>
