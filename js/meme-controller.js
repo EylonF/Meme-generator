@@ -9,32 +9,35 @@ function onInitCanvas(elImg) {
     console.log(elImg)
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-    // addListeners()
+    initMeme()
+    document.querySelector('.line-txt').value = ''
     setImg(elImg.id)
-    const MEME = getMeme()
 
     addListeners()
-    renderMeme(MEME)
+    renderMeme()
 }
 
-function renderMeme(meme) {
-    const TXT = meme.lines[meme.selectedLineIdx].txt
-    const SIZE = meme.lines[meme.selectedLineIdx].size
-    const COLOR = meme.lines[meme.selectedLineIdx].color
-    const STROKE = meme.lines[meme.selectedLineIdx].stroke
-    const FONT = meme.lines[meme.selectedLineIdx].font
+function renderMeme() {
+    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
+    const MEME = getMeme()
+const elIMG = document.getElementById(MEME.selectedImgId)
+gCtx.drawImage(elIMG, 0, 0, gElCanvas.width, gElCanvas.height)
+    const TXT = MEME.lines[MEME.selectedLineIdx].txt
+    const SIZE = MEME.lines[MEME.selectedLineIdx].size
+    const COLOR = MEME.lines[MEME.selectedLineIdx].color
+    const STROKE = MEME.lines[MEME.selectedLineIdx].stroke
+    const FONT = MEME.lines[MEME.selectedLineIdx].font
     drawText(TXT, SIZE, COLOR, STROKE, FONT)
 }
 
-function onChangeText(txt) {
-console.log(txt)
-    console.log(txt)
-    drawText(txt)
+function onChangeText() {
+  const TXT = document.querySelector('.line-txt').value
+  changeText(TXT)
+  renderMeme()
 }
 
 function addListeners() {
-document.querySelector('.line-txt').addEventListener('input',drawText)
+document.querySelector('.line-txt').addEventListener('input',onChangeText)
 
     // addMouseListeners()
     // addTouchListeners()
@@ -101,7 +104,7 @@ function getEvPos(ev) {
 }
 
 function drawText(txt, size = 50, color = 'white', stroke = 'black', font = 'impact') {
-    txt = document.querySelector('.line-txt').value
+    // txt = document.querySelector('.line-txt').value
 
     console.log(gCtx)
     const currFont = `${size}px ${font}`
@@ -111,4 +114,29 @@ function drawText(txt, size = 50, color = 'white', stroke = 'black', font = 'imp
     gCtx.lineWidth = '2'
     gCtx.strokeStyle = stroke
     gCtx.strokeText(txt,70,70)
+}
+
+function onIncreaseFont(){
+    increaseFont()
+    renderMeme()
+}
+
+function onDecreaseFont(){
+    decreaseFont()
+    renderMeme()
+}
+
+function onSetStroke(stroke){
+    setStroke(stroke)
+    renderMeme()
+}
+function onSetColor(color){
+    setColor(color)
+    renderMeme()
+}
+
+function onClearText(){
+    const isSure = clearText()
+    renderMeme()
+    if (isSure) document.querySelector('.line-txt').value = ''
 }

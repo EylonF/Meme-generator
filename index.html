@@ -46,22 +46,25 @@
                 <canvas class="canvas" id="my-canvas" height="500" width="500" onclick="canvasClicked(event)">
                 </canvas>
 
-                
+
                 <div class="controls">
-    
-                    <input class="line-txt" type="text" placeholder="Enter Text Here" onchange="onChangeText(this.value)" autofocus>
-                    <button class="arrows"> <img src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+
+                    <input class="line-txt" type="text" placeholder="Enter Text Here" autofocus>
+                    <button class="arrows"> <img
+                            src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
                     <button class="plus"> <img src="./imgs/icons/add.png"></button>
-                    <button class="trash"> <img src="./imgs/icons/trash.png"></button>
-                    <button class="a-plus"> <img src="./imgs/icons/increase font - icon.png"></button>
-                    <button class="a-minus"> <img src="./imgs/icons/decrease font - icon.png"></button>
+                    <button class="trash" onclick="onClearText()"> <img src="./imgs/icons/trash.png"></button>
+                    <button class="a-plus" onclick="onIncreaseFont()"> <img
+                            src="./imgs/icons/increase font - icon.png"></button>
+                    <button class="a-minus" onclick="onDecreaseFont()"> <img
+                            src="./imgs/icons/decrease font - icon.png"></button>
                     <button class="align-left"> <img src="./imgs/icons/align-to-left.png"></button>
                     <button class="align-center"> <img src="./imgs/icons/center-text-alignment.png"></button>
                     <button class="align-right"> <img src="./imgs/icons/align-to-right.png"></button>
                     <select class="font" name="" id=""></select>
-                    <button class="stroke"> <img src="./imgs/icons/text stroke.png"></button>
-                    <button class="colors"> <img src="./imgs/icons/paint-board-and-brush.png"></button>
-                    
+                    <button class="stroke flex"><img src="./imgs/icons/text stroke.png"><input class="stroke-btn" type="color" onchange="onSetStroke(this.value)" /></button>
+                    <button class="color flex"> <img src="./imgs/icons/paint-board-and-brush.png"><input class="color-btn" type="color" onchange="onSetColor(this.value)" /></button>
+
                     <button class="download">Download</button>
                     <button class="share">Share</button>
                 </div>
