@@ -32,15 +32,14 @@ function initMeme() {
                 y: 480,
                 isDrag: false,
             },
-
         ]
     }
-
+    
 }
 
 function setImg(imgId) {
+    console.log(imgId)
     gMeme.selectedImgId = imgId
-    // console.log(gMeme.selectedImgId)
 }
 
 function getMeme() {
@@ -56,7 +55,6 @@ function decreaseFont() {
 
 function changeText(txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = txt
-    // console.log(gMeme.lines[gMeme.selectedLineIdx].txt)
 }
 
 function setStroke(stroke) {
@@ -69,15 +67,10 @@ function setColor(color) {
 function clearText() {
     const isSure = confirm('are you sure?')
     if (isSure) {
-        // const lines = gMeme.lines
-        // lines.forEach(function (line) {
-        //     line.txt = ''
-        // });
         let currImgId = gMeme.selectedImgId
         console.log(currImgId)
         initMeme()
         setImg(currImgId)
-        
         return isSure
     }
 }
@@ -107,7 +100,6 @@ function isTextClicked(clickedPos) {
         const posX = line.x
         const posY = line.y
         const distanceY = posY - clickedPos.y
-        // console.log(clickedPos.x)
         if (distanceY <= gMeme.lines[gMeme.selectedLineIdx].size
             && distanceY > 0
             && clickedPos.x > 50
@@ -129,11 +121,8 @@ function getLine() {
 }
 
 function moveLine(dx, dy) {
-    // console.log(dx, dx)
-
     gMeme.lines[gMeme.selectedLineIdx].x += dx
     gMeme.lines[gMeme.selectedLineIdx].y += dy
-
 }
 
 function setEdit(value) {
@@ -142,9 +131,7 @@ function setEdit(value) {
 }
 
 function changeLine() {
-    // gMeme.lines[gMeme.selectedLineIdx].isEdit = false
     gMeme.selectedLineIdx = (gMeme.selectedLineIdx >= gMeme.lines.length - 1) ? 0 : ++gMeme.selectedLineIdx
-    // gMeme.lines[gMeme.selectedLineIdx].isEdit = true
     console.log(gMeme.selectedLineIdx)
 }
 
@@ -171,7 +158,6 @@ function setFont(font) {
 function uploadImg() {
     const imgDataUrl = gElCanvas.toDataURL("image/jpeg");
 
-    // A function to be called if request succeeds
     function onSuccess(uploadedImgUrl) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
         document.querySelector('.user-msg').innerText = `Your photo is available here: ${uploadedImgUrl}`
@@ -212,7 +198,7 @@ function saveMeme() {
 
 function setMeme(meme) {
     console.log(meme)
-    // initMeme()
+    initMeme()
     gMeme.lines = meme.lines
-    
+    gMeme.selectedImgId = meme.selectedImgId
 }

@@ -11,7 +11,7 @@ function onInitCanvas(elImg) {
     gCtx = gElCanvas.getContext('2d')
     initMeme()
     document.querySelector('.line-txt').value = ''
-document.querySelector('.meme-editor').style.display = 'block'
+    document.querySelector('.meme-editor').style.display = 'block'
     setImg(elImg.id)
     addListeners()
     renderMeme()
@@ -23,7 +23,7 @@ function renderMeme() {
     const elIMG = document.getElementById(MEME.selectedImgId)
     gCtx.drawImage(elIMG, 0, 0, gElCanvas.width, gElCanvas.height)
     const SELECTEDLINE = MEME.selectedLineIdx
-    MEME.lines.forEach(function (line,i) {
+    MEME.lines.forEach(function (line, i) {
         const TXT = line.txt
         const SIZE = line.size
         const COLOR = line.color
@@ -31,13 +31,14 @@ function renderMeme() {
         const FONT = line.font
         const ALIGN = line.align
         const POS = { x: line.x, y: line.y }
-        // const ISEDIT = line.isEdit
         const ISDRAG = line.isDrag
+
         drawText(TXT, SIZE, COLOR, STROKE, FONT, ALIGN, POS)
-        if (!ISDRAG && SELECTEDLINE === i && MEME.isEdit) darwTextArea(POS,SIZE)
-        
+
+        if (!ISDRAG && SELECTEDLINE === i && MEME.isEdit) darwTextArea(POS, SIZE)
+
     });
-    
+
 }
 
 function onChangeText() {
@@ -48,15 +49,8 @@ function onChangeText() {
 
 function addListeners() {
     document.querySelector('.line-txt').addEventListener('input', onChangeText)
-
     addMouseListeners()
     addTouchListeners()
-    // window.addEventListener('resize', () => {
-    //     resizeCanvas()
-    //     const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
-    //     createCircle(center)
-    //     renderCanvas()
-    // })
 }
 
 function addMouseListeners() {
@@ -94,7 +88,6 @@ function onMove(ev) {
     moveLine(dx, dy)
     gStartPos = pos
     renderMeme()
-
 }
 
 function onUp() {
@@ -127,20 +120,18 @@ function drawText(txt, size, color, stroke, font, align, pos) {
     gCtx.fillText(txt, pos.x, pos.y);
     gCtx.strokeStyle = stroke
     gCtx.strokeText(txt, pos.x, pos.y)
-    
 }
 
-function darwTextArea(pos,size){
+function darwTextArea(pos, size) {
     gCtx.beginPath();
     gCtx.moveTo(50, pos.y + 10);
     gCtx.lineTo(450, pos.y + 10);
     gCtx.moveTo(50, pos.y - size);
-    gCtx.lineTo(450, pos.y - size );
+    gCtx.lineTo(450, pos.y - size);
     //   gCtx.rect(50, pos.y + 10, 400, -size - 10);
     gCtx.closePath();
     gCtx.strokeStyle = '#1b1b1b';
     gCtx.stroke();
-    
 }
 
 
@@ -192,7 +183,7 @@ function onChangeLine() {
     document.querySelector('.line-txt').value = line.txt
 }
 
-function onAddLine(){
+function onAddLine() {
     addLine()
     renderMeme()
     const line = getLine()
@@ -209,7 +200,7 @@ function onSetFont(font) {
     renderMeme()
 }
 
-function onSaveMeme(){
+function onSaveMeme() {
     saveMeme()
     document.querySelector('.line-txt').value = ''
     setEdit(false)
@@ -217,9 +208,8 @@ function onSaveMeme(){
     alert('meme savad')
 }
 
-function onSetMeme(meme,elImg){
-    
-    onInitCanvas(elImg)
+function onSetMeme(meme, Img) {
+    onInitCanvas(Img)
     setMeme(meme)
     renderMeme()
 }

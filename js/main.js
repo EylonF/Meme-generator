@@ -8,6 +8,7 @@ function toggleWho() {
 function toggleMenu() {
     document.body.classList.toggle('menu-open');
 }
+
 function toggleModal(value) {
     document.body.classList.toggle('modal-open');
     if (!value) return
@@ -30,7 +31,7 @@ function _renderModal(value) {
                 
                 const str =`
                 <div class="meme-card flex">
-                <img id="${i}" onclick="onRestoreMeme(this)" src="imgs/${meme.selectedImgId}.jpg">
+                <img id="${meme.selectedImgId}" onclick="onRestoreMeme(this)" src="imgs/${meme.selectedImgId}.jpg">
                 <div class="lines flex">
                 ${lineTxtStrs.join('')}
                 </div>
@@ -42,6 +43,7 @@ function _renderModal(value) {
             // console.log(strHtmls)
             elModal.innerHTML = strHtmls
             break;
+
         case 'about':
             elModal.innerHTML =
                 `<div class="about-container flex align-center">
@@ -66,11 +68,11 @@ function _renderModal(value) {
                     </a>
                 </li>
             </ul>
+
             <p class="info">Hi my name is Eylon , I am 27 years old, living in Herzeliya with my
                 partner Noy, and Stormi, our beautiful cat.</p>
         
         </div>  
-            
             `
             break;
 
@@ -82,10 +84,9 @@ function _renderModal(value) {
 function onRestoreMeme(elImg){
     const memes = loadFromStorage(STORAGE_KEY)
     console.log(elImg)
-    memes.forEach(function (meme,i) {
+    memes.forEach(function (meme) {
         // console.log(i)
-        if (i+'' === elImg.id) onSetMeme(meme,elImg)
+        if (meme.selectedImgId === elImg.id) onSetMeme(meme,elImg)
     });
     toggleModal()
-    
 }

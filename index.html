@@ -16,7 +16,6 @@
 
     <div class="main-screen" onclick="toggleWho()"></div>
 
-
     <header class="main-header">
         <div class="header-container main-layout flex space-between align-center">
 
@@ -28,7 +27,6 @@
                     <li><a href="#meme-editor">memegen</a></li>
                     <li id="saved-memes" onclick="toggleModal(this.id)"><a href="#">Saved memes</a></li>
                     <li id="about" onclick="toggleModal(this.id)"><a href="#">About</a></li>
-
                 </ul>
             </nav>
 
@@ -39,7 +37,7 @@
 
     <main class="main-content main-layout">
         <div class="modal flex">
-         
+
         </div>
 
         <section id="meme-editor" class="meme-editor">
@@ -47,46 +45,63 @@
             <h1>Meme Editor</h1>
 
             <div class="canvas-container flex space-between">
+
                 <canvas class="canvas" id="my-canvas" height="500" width="500">
                 </canvas>
-
 
                 <div class="controls">
 
                     <input onclick="onEdit()" class="line-txt" type="text" placeholder="Enter Text Here"
                         onsubmit="onSubmitTxt()">
+
                     <button onclick="onChangeLine()" class="arrows"> <img
                             src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+
                     <button onclick="onAddLine()" class="plus"> <img src="./imgs/icons/add.png"></button>
+
                     <button class="trash" onclick="onClearText()"> <img src="./imgs/icons/trash.png"></button>
+
                     <button class="a-plus" onclick="onIncreaseFont()"> <img
                             src="./imgs/icons/increase font - icon.png"></button>
+
                     <button class="a-minus" onclick="onDecreaseFont()"> <img
                             src="./imgs/icons/decrease font - icon.png"></button>
+
                     <button id="left" class="align-left" onclick="onAlignText(this.id)"> <img
                             src="./imgs/icons/align-to-left.png"></button>
+
                     <button id="center" class="align-center" onclick="onAlignText(this.id)"> <img
                             src="./imgs/icons/center-text-alignment.png"></button>
+
                     <button id="right" class="align-right" onclick="onAlignText(this.id)"> <img
                             src="./imgs/icons/align-to-right.png"></button>
+
                     <select class="font" name="" id="" onchange="onSetFont(this.value)">
                         <option value="impact">Impact</option>
                         <option value="serif">Serif</option>
                         <option value="Montserrat">Montserrat</option>
                     </select>
+
                     <button class="stroke flex"><img src="./imgs/icons/text stroke.png"><input class="stroke-btn"
                             type="color" onchange="onSetStroke(this.value)" /></button>
+
                     <button class="color flex"> <img src="./imgs/icons/paint-board-and-brush.png"><input
                             class="color-btn" type="color" onchange="onSetColor(this.value)" /></button>
-                            <button class="save" onclick="onSaveMeme()">Save meme</button>
+
+                    <button class="save" onclick="onSaveMeme()">Save meme</button>
 
                     <button class="download"><a href="#" onclick="onDownloadImg(this)" download="my-img.jpg">Download as
                             jpeg</a></button>
+
                     <button class="share" onclick="uploadImg()">Upload</button>
+
                 </div>
+
             </div>
+
             <p class="user-msg"></p>
             <div class="share-container"></div>
+
         </section>
 
         <section id="gallery" class="gallery">
@@ -95,8 +110,6 @@
 
             </div>
         </section>
-
-
 
     </main>
 
@@ -117,7 +130,7 @@
     <script src="js/gallery-controller.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
+
 </body>
 
 </html>
-

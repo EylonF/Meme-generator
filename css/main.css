@@ -9,7 +9,6 @@
     src: url(../fonts/Montserrat/Montserrat-Regular.ttf)
 }
 
-
 html {
     font-family: Montserrat;
     max-width: 100%;
@@ -78,7 +77,6 @@ z-index: 1;
     height: 100%;
 }
 
-
 .main-nav {
     color: #fff;
 }
@@ -119,8 +117,6 @@ z-index: 1;
 .main-content .modal {
     position: absolute;
     background-color: white;
-    /* min-width: 500px;
-    min-height: 500px;   */
     width: 80vw;
     min-height: 80vw;
     top: 10%;
@@ -137,7 +133,7 @@ body.modal-open .main-content .modal {
     display: flex;
 }
 
-/* about */
+/* about modal */
 body.modal-open .main-content .modal .about-container {
     flex-direction: column;
 }
@@ -168,7 +164,6 @@ body.modal-open .main-content .modal .about-container .social-buttons li a:hover
 body.modal-open .main-content .modal .imgs-container {
     width: 100%;
 display: grid;
-/* grid-template: auto/repeat(3,33%); */
 padding: 10px;
 }
 
@@ -184,9 +179,9 @@ body.modal-open .main-content .modal .imgs-container img {
 padding: 2px;
 margin: 0px auto;
 }
+
 body.modal-open .main-content .modal .imgs-container .lines {
 flex-direction: column;
-/* margin-inline-start: 10px; */
 }
 body.modal-open .main-content .modal .imgs-container .lines p{
     display: block;
@@ -195,8 +190,6 @@ padding: 0px;
 margin: 2px auto;
 
 }
-
-
 
 /* editor */
 
@@ -213,7 +206,6 @@ margin: 2px auto;
 .main-content h1{
 text-align: center;
 }
-
 
 .controls {
 width: 50%;
@@ -242,7 +234,6 @@ height: 500px;
     grid-area: 1/1/2/6;
     font-size: 1.8rem;
     border-radius: 5px ;
-    /* margin-bottom: 5px; */
     text-align: center;
 }
 
@@ -350,13 +341,11 @@ height: 500px;
     border: 1px solid #292929;
 }
 
-
 /* gallery */
 
 .gallery .imgs-container {
     display: grid;
 }
-
 
 .gallery .imgs-container img {
     max-width: 100%;
@@ -368,9 +357,6 @@ height: 500px;
     cursor: pointer;
     background-color: #292929;
 }
-
-
-
 
 /* footer */
 
@@ -427,11 +413,7 @@ height: 500px;
 /* MOBILE ONLY */
 @media (max-width: 900px) {
 
-    body {
-        width: 100vw;
-        /* min-height: 100vh; */
-    }
-
+   
     /* hamburger */
     .header-container ul {
         position: fixed;
@@ -474,7 +456,6 @@ height: 500px;
         text-decoration: none;
         background-color: #eee;
         color: #292929 ;
-        /* color: inherit; */
     }
     
     .main-content .canvas-container{
@@ -518,9 +499,6 @@ height: 500px;
         display: none;
     }
     
-    /* .main-content .controls {
-        padding-inline-start: 10px;
-    } */
     .gallery .imgs-container {
     grid-template: auto/repeat(4,1fr);
     }
