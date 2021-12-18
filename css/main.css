@@ -9,6 +9,7 @@
     src: url(../fonts/Montserrat/Montserrat-Regular.ttf)
 }
 
+
 html {
     font-family: Montserrat;
     max-width: 100%;
@@ -48,6 +49,10 @@ body.menu-open .main-screen {
     pointer-events: auto;
     opacity: 1;
 }
+body.modal-open .main-screen {
+    pointer-events: auto;
+    opacity: 1;
+}
 
 .logo img {
     height: 25px;
@@ -66,6 +71,7 @@ height: 70px;
 background-color:#79B4B7 ;
 grid-area: header;
 position: fixed;
+z-index: 1;
 }
 
 .header-container{
@@ -108,6 +114,90 @@ position: fixed;
 }
 
 /* main */
+
+/* modal */
+.main-content .modal {
+    position: absolute;
+    background-color: white;
+    /* min-width: 500px;
+    min-height: 500px;   */
+    width: 80vw;
+    min-height: 80vw;
+    top: 10%;
+    left: 10%;
+    border:5px solid #292929;
+    justify-content: center;
+    z-index: 2;
+    display: none;
+    padding: 20px 50px;
+    font-size: 1.6rem;
+}
+
+body.modal-open .main-content .modal {
+    display: flex;
+}
+
+/* about */
+body.modal-open .main-content .modal .about-container {
+    flex-direction: column;
+}
+
+body.modal-open .main-content .modal .about-container img {
+    width: 200px;
+}
+body.modal-open .main-content .modal .about-container .social-buttons li{
+    margin: 5px;
+    background-color: #292929;
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 2rem;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body.modal-open .main-content .modal .about-container .social-buttons li a{
+    color: white;
+}
+body.modal-open .main-content .modal .about-container .social-buttons li a:hover{
+    color: #79B4B7;
+}
+
+/* saved memes modal*/
+body.modal-open .main-content .modal .imgs-container {
+    width: 100%;
+display: grid;
+/* grid-template: auto/repeat(3,33%); */
+padding: 10px;
+}
+
+body.modal-open .main-content .modal .imgs-container .meme-card{
+    display: block;
+width: 100%;
+}
+
+body.modal-open .main-content .modal .imgs-container img {
+    display: block;
+    max-width: 100%;
+    max-height: 250px;
+padding: 2px;
+margin: 0px auto;
+}
+body.modal-open .main-content .modal .imgs-container .lines {
+flex-direction: column;
+/* margin-inline-start: 10px; */
+}
+body.modal-open .main-content .modal .imgs-container .lines p{
+    display: block;
+font-size: 1em;
+padding: 0px;
+margin: 2px auto;
+
+}
+
+
+
 /* editor */
 
 .main-content{
@@ -117,6 +207,7 @@ position: fixed;
 .meme-editor {
     width: 100%;
     margin: 0px auto;
+    display: none;
 }
 
 .main-content h1{
@@ -138,14 +229,21 @@ height: 500px;
 .controls button {
     border: none;
     background: rgba(255, 255, 255, 0.781);
+    border-radius: 5px;
+    margin: 2px;
+    border: 1px solid #292929;
+}
+.controls button:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #292929;
 }
 
 .controls .line-txt {
     grid-area: 1/1/2/6;
     font-size: 1.8rem;
-/* border-radius: 5px ;
-margin-bottom: 5px; */
-text-align: center;
+    border-radius: 5px ;
+    /* margin-bottom: 5px; */
+    text-align: center;
 }
 
 .controls .arrows{
@@ -182,6 +280,8 @@ text-align: center;
 
 .controls .font {
     grid-area: 4/1/5/4;
+    border-radius: 5px;
+    margin: 2px;
 }
 
 .controls .stroke{
@@ -220,20 +320,53 @@ text-align: center;
     grid-area: 4/4/5/5;
 }
 
-
-
+.controls .save {
+    grid-area: 6/2/7/5;
+    background-color: #79B4B7;
+    color: whitesmoke;
+    font-size: 1.6rem;
+    border: 1px solid #292929;
+}
 
 .controls .download {
     grid-area: 7/1/8/3;
+    background-color: #79B4B7;
+    margin: 0px;
+    border: 1px solid #292929;
 }
+
+.controls .download a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 1.6rem;
+}
+
 .controls .share {
     grid-area: 7/4/8/6;
+    background-color: #79B4B7;
+    color: whitesmoke;
+    font-size: 1.6rem;
+    margin: 0px;
+    border: 1px solid #292929;
 }
+
 
 /* gallery */
 
-.gallery img {
-    max-width: 200px;
+.gallery .imgs-container {
+    display: grid;
+}
+
+
+.gallery .imgs-container img {
+    max-width: 100%;
+    padding: 2px;
+}
+
+.gallery .imgs-container img:hover {
+    box-shadow: 0px 0px 10px black ;
+    cursor: pointer;
+    background-color: #292929;
 }
 
 
@@ -343,18 +476,22 @@ text-align: center;
         color: #292929 ;
         /* color: inherit; */
     }
-
+    
     .main-content .canvas-container{
         flex-direction: column;
         align-items: center;
     }
-
+    
     .main-content .canvas-container .canvas{
-margin-bottom: 20px;
+        margin-bottom: 20px;
     }
-
+    
     .main-content .controls {
         height: 400px;
+        width: 400px;
+    }
+    .gallery .imgs-container {
+    grid-template: auto/repeat(2,1fr);
     }
 }
 
@@ -366,6 +503,9 @@ margin-bottom: 20px;
         padding-left: 0;
         padding-right: 0;
     }
+    .gallery .imgs-container {
+    grid-template: auto/repeat(3,1fr);
+}
 }
 
 /* MEDIUM */
@@ -373,19 +513,32 @@ margin-bottom: 20px;
     .main-layout {
         max-width: 860px;
     }
-
+    
     .btn-menu {
         display: none;
     }
-
+    
     /* .main-content .controls {
         padding-inline-start: 10px;
     } */
+    .gallery .imgs-container {
+    grid-template: auto/repeat(4,1fr);
+    }
+
+    .main-content .controls {
+        margin-inline-start: 5px;
+    }
+    body.modal-open .main-content .modal .imgs-container {
+    grid-template: auto/repeat(2,50%);
+    }
 }
 
 /* LARGE */
 @media (min-width: 1140px) {
     .main-layout {
         max-width: 1100px;
+    }
+    body.modal-open .main-content .modal .imgs-container {
+    grid-template: auto/repeat(3,33%);
     }
 }
