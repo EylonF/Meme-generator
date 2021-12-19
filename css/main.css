@@ -11,14 +11,14 @@
 
 html {
     font-family: Montserrat;
-    max-width: 100%;
+    max-width: 100vw;
     overflow-x: hidden;
 }
 
 body {
     font-size: 1rem;
     margin: 0px;
-    max-width: 100%;
+    max-width: 100vw;
     min-height: 100vh;
     display: grid;
     grid-template-rows: 70px 1fr 200px;
@@ -75,6 +75,11 @@ z-index: 1;
 
 .header-container{
     height: 100%;
+}
+.header-container .logo a{
+    position: absolute;
+    height: 33px;
+    width: 120px;
 }
 
 .main-nav {
@@ -202,9 +207,16 @@ margin: 2px auto;
     margin: 0px auto;
     display: none;
 }
+.meme-editor .canvas-container{
+    align-items: center
+}
+
+
 
 .main-content h1{
 text-align: center;
+margin-top: 30px;
+font-size: 2rem;
 }
 
 .controls {
@@ -273,6 +285,9 @@ height: 500px;
     grid-area: 4/1/5/4;
     border-radius: 5px;
     margin: 2px;
+    text-align: center;
+    font-size: 1.6rem;
+    color: #292929;
 }
 
 .controls .stroke{
@@ -321,7 +336,7 @@ height: 500px;
 
 .controls .download {
     grid-area: 7/1/8/3;
-    background-color: #79B4B7;
+    background-color: #79a1a3be;
     margin: 0px;
     border: 1px solid #292929;
 }
@@ -334,7 +349,7 @@ height: 500px;
 
 .controls .share {
     grid-area: 7/4/8/6;
-    background-color: #79B4B7;
+    background-color: #79a1a3be;
     color: whitesmoke;
     font-size: 1.6rem;
     margin: 0px;
@@ -343,13 +358,20 @@ height: 500px;
 
 /* gallery */
 
+.gallery h1 {
+    font-size: 2rem;
+    margin-top: 40px;
+}
+
 .gallery .imgs-container {
     display: grid;
+    margin-bottom: 5px;
 }
 
 .gallery .imgs-container img {
     max-width: 100%;
-    padding: 2px;
+    padding: 3px;
+    margin: auto;
 }
 
 .gallery .imgs-container img:hover {
@@ -463,16 +485,16 @@ height: 500px;
         align-items: center;
     }
     
-    .main-content .canvas-container .canvas{
-        margin-bottom: 20px;
-    }
     
     .main-content .controls {
         height: 400px;
-        width: 400px;
+        width: 360px;
     }
     .gallery .imgs-container {
-    grid-template: auto/repeat(2,1fr);
+        grid-template: auto/repeat(2,1fr);
+    }
+    .main-content .canvas-container .canvas{
+        margin-bottom: 10px;
     }
 }
 
@@ -485,8 +507,8 @@ height: 500px;
         padding-right: 0;
     }
     .gallery .imgs-container {
-    grid-template: auto/repeat(3,1fr);
-}
+        grid-template: auto/repeat(3,1fr);
+    }
 }
 
 /* MEDIUM */

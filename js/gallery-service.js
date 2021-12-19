@@ -21,6 +21,14 @@ var gImgs = [
     { id: 16, url: 'imgs/16.jpg', keywords: ['man', 'tv','movie'] },
     { id: 17, url: 'imgs/17.jpg', keywords: ['potin', 'politics','man'] },
     { id: 18, url: 'imgs/18.jpg', keywords: ['toy', 'movie','tv'] },
+    { id: 19, url: 'imgs/19.jpg', keywords: ['angry', 'man','tv'] },
+    { id: 20, url: 'imgs/swiz.jpg', keywords: ['happy', 'dance'] },
+    { id: 21, url: 'imgs/drevil.jpg', keywords: ['angry', 'man','tv'] },
+    { id: 22, url: 'imgs/img2.jpg', keywords: ['kids', 'dance','happy'] },
+    { id: 23, url: 'imgs/img4.jpg', keywords: ['trump', 'politics'] },
+    { id: 24, url: 'imgs/img6.jpg', keywords: ['dog', 'cute'] },
+    { id: 25, url: 'imgs/Oprah.jpg', keywords: ['oprah', 'tv'] },
+
 ];
 
 function getImgs() {

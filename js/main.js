@@ -1,5 +1,9 @@
 'use strict'
 
+function onInit(){
+    onInitGallery()
+}
+
 function toggleWho() {
     if (document.body.classList.contains('modal-open')) toggleModal()
     if (document.body.classList.contains('menu-open')) toggleMenu()
@@ -21,9 +25,9 @@ function _renderModal(value) {
         case 'saved-memes':
             const memes = loadFromStorage(STORAGE_KEY)
             let strHtmls = `<div class="imgs-container">`
-            let lineTxtStrs 
+            let txtStrs 
             const strs = memes.map(function (meme,i) {
-                lineTxtStrs = meme.lines.map(function (line) {
+                txtStrs = meme.lines.map(function (line) {
                     return `
                     <p>${line.txt}</p>
                     `
@@ -31,9 +35,9 @@ function _renderModal(value) {
                 
                 const str =`
                 <div class="meme-card flex">
-                <img id="${meme.selectedImgId}" onclick="onRestoreMeme(this)" src="imgs/${meme.selectedImgId}.jpg">
+                <img id="${i}" onclick="onRestoreMeme(this)" src="imgs/${meme.selectedImgId}.jpg">
                 <div class="lines flex">
-                ${lineTxtStrs.join('')}
+                ${txtStrs.join('')}
                 </div>
                 </div>
                 `
@@ -83,10 +87,12 @@ function _renderModal(value) {
 
 function onRestoreMeme(elImg){
     const memes = loadFromStorage(STORAGE_KEY)
-    console.log(elImg)
-    memes.forEach(function (meme) {
-        // console.log(i)
-        if (meme.selectedImgId === elImg.id) onSetMeme(meme,elImg)
+    // console.log(elImg)
+    console.log(+elImg.id)
+    memes.forEach(function (meme,i) {
+        console.log(i)
+        if (+elImg.id === i) onSetMeme(meme)
     });
     toggleModal()
 }
+

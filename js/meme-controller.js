@@ -6,21 +6,22 @@ var gStartPos
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 function onInitCanvas(elImg) {
-    // console.log(elImg)
+
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
     initMeme()
     document.querySelector('.line-txt').value = ''
     document.querySelector('.meme-editor').style.display = 'block'
-    setImg(elImg.id)
+    setImg(elImg)
     addListeners()
-    renderMeme()
+    // renderMeme()
+    onResizeCanvas(elImg)
 }
 
 function renderMeme() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
     const MEME = getMeme()
-    const elIMG = document.getElementById(MEME.selectedImgId)
+    const elIMG = document.querySelector(`.img${MEME.selectedImgId}`)
     gCtx.drawImage(elIMG, 0, 0, gElCanvas.width, gElCanvas.height)
     const SELECTEDLINE = MEME.selectedLineIdx
     MEME.lines.forEach(function (line, i) {
@@ -208,8 +209,22 @@ function onSaveMeme() {
     alert('meme savad')
 }
 
-function onSetMeme(meme, Img) {
-    onInitCanvas(Img)
+function onSetMeme(meme) {
+    // const elImg = document.getElementById(meme.selectedImgId)
+    const elImg = document.querySelector(`.img${meme.selectedImgId}`)
+    console.log(elImg)
+    onInitCanvas(elImg)
     setMeme(meme)
     renderMeme()
 }
+
+function onResizeCanvas(elImg) {
+    const cW = (window.innerWidth < 550) ? 350 : 500
+    const cH =  elImg.naturalHeight * cW / elImg.naturalWidth
+    gElCanvas.height = cH
+    gElCanvas.width = cW
+    console.log(gElCanvas.height)
+    renderMeme()
+
+}
+
