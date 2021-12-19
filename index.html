@@ -12,14 +12,14 @@
 
 </head>
 
-<body onload="onInit()">
+<body onload="renderGallery()">
 
     <div class="main-screen" onclick="toggleWho()"></div>
 
     <header class="main-header">
         <div class="header-container main-layout flex space-between align-center">
 
-            <div class="logo" ><a href="#"></a><img src="imgs/LOGO.png"></div>
+            <div class="logo"><a href="#"></a><img src="imgs/LOGO.png"></div>
 
             <nav class="main-nav">
                 <ul class="nav-container clean-list flex">
@@ -51,8 +51,8 @@
 
                 <div class="controls">
 
-                    <input onclick="onEdit()" class="line-txt" type="text" placeholder="Enter Text Here"
-                        onsubmit="onSubmitTxt()">
+                    <input data-emoji="true" onclick="onEdit()" class="line-txt" type="text" placeholder="Enter Text Here"
+                        onsubmit="onSubmitTxt()" data-emoji-input="unicode" data-emojiable="true">
 
                     <button onclick="onChangeLine()" class="arrows"> <img
                             src="imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
@@ -85,8 +85,9 @@
                     <button class="stroke flex"><img src="imgs/icons/text stroke.png"><input class="stroke-btn"
                             type="color" onchange="onSetStroke(this.value)" /></button>
 
-                    <button class="color flex"> <img src="imgs/icons/paint-board-and-brush.png"><input
-                            class="color-btn" type="color" onchange="onSetColor(this.value)" /></button>
+                    <button class="color flex"> <img src="imgs/icons/paint-board-and-brush.png"><input class="color-btn"
+                            type="color" onchange="onSetColor(this.value)" /></button>
+
 
                     <button class="save" onclick="onSaveMeme()">Save meme</button>
 
@@ -98,15 +99,29 @@
                 </div>
 
             </div>
+            <div class="msg-container" id="msg-container" hidden>
+                <p class="user-msg"></p>
+                <div class="share-container"></div>
 
-            <p class="user-msg"></p>
-            <div class="share-container"></div>
+            </div>
 
         </section>
 
         <section id="gallery" class="gallery">
             <h1>Photo Gallery</h1>
-            <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
+            <div class="filter-container flex align-center">
+
+                <div class="file-upload-container flex align-center">
+                    <p>Upload Image From Device -</p>
+                    <label class="custom-file-upload">
+                        <input type="file" value="file" class="file-input" name="image" onchange="onImgInput(event)" />
+                        Choose File
+                    </label>
+
+                </div>
+
+
+            </div>
 
             <div class="imgs-container">
 
@@ -132,7 +147,7 @@
     <script src="js/gallery-controller.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
-    
+
 </body>
 
 </html>

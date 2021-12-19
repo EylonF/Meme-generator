@@ -6,7 +6,6 @@ var gStartPos
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 function onInitCanvas(elImg) {
-
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
     initMeme()
@@ -185,7 +184,7 @@ function onChangeLine() {
 }
 
 function onAddLine() {
-    addLine()
+    addLine(gElCanvas.height)
     renderMeme()
     const line = getLine()
     document.querySelector('.line-txt').value = line.txt
@@ -227,4 +226,6 @@ function onResizeCanvas(elImg) {
     renderMeme()
 
 }
+
+
 

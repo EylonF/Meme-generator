@@ -1,8 +1,5 @@
 'use strict'
 
-function onInit(){
-    onInitGallery()
-}
 
 function toggleWho() {
     if (document.body.classList.contains('modal-open')) toggleModal()
@@ -94,5 +91,25 @@ function onRestoreMeme(elImg){
         if (+elImg.id === i) onSetMeme(meme)
     });
     toggleModal()
+}
+
+function onImgInput(ev) {
+    
+    loadImageFromInput(ev, onPushImg)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    document.querySelector('.share-container').innerHTML = ''
+    var reader = new FileReader()
+
+    reader.onload = (event) => {
+        console.log('onload');
+        var img = new Image()
+        // Render on canvas
+        img.onload = onImageReady.bind(null, img)
+        img.src = event.target.result
+    }
+    console.log('after');
+    reader.readAsDataURL(ev.target.files[0])
 }
 

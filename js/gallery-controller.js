@@ -1,9 +1,5 @@
 'use strict'
 
-function onInitGallery() {
-    renderGallery()
-}
-
 function renderGallery() {
     const imgs = getImgs()
 
@@ -12,4 +8,11 @@ function renderGallery() {
     })
     
     document.querySelector('.imgs-container').innerHTML = strHtmls.join('')
+}
+
+function onPushImg(img){
+    pushImg(img)
+    console.log(img)
+    renderGallery()
+    // onInitCanvas(elImg)
 }
