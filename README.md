@@ -1,5 +1,5 @@
 # Meme-generator
-Great useful app made with HTML <canvas> and vanila js, as part of the 2nd sprint of "Coding Academy" full-stack course.
+Great useful app made with HTML < canvas > and vanila js, as part of the 2nd sprint of "Coding Academy" full-stack course.
 
 <a href="https://eylonf.github.io/Meme-generator/" target="blank">LINK TO APP</a>
 
@@ -17,7 +17,7 @@ Great useful app made with HTML <canvas> and vanila js, as part of the 2nd sprin
 - JavaScript (vanila)
 
 # implements:
-- <canvas>
+- < canvas > HTML element
 - using local storage to save memes 
 - user can upload file
 - Dynamically sizing the canvas when choosing an image
