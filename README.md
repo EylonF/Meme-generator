@@ -15,9 +15,9 @@ Great useful app made with HTML < canvas > and vanila js, as part of the 2nd spr
 - HTML 
 - CSS
 - JavaScript (vanila)
+- < canvas > HTML element
 
 # implements:
-- < canvas > HTML element
 - using local storage to save memes 
 - user can upload file
 - Dynamically sizing the canvas when choosing an image
